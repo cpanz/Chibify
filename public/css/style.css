@@ -84,6 +84,7 @@ main form input[type="submit"]:hover {
 }
 
 main section#shortened {
+    font-size: 2em;
     opacity: 0;
     color: #AAAAAA;
     transition: all 0.5s ease;
@@ -105,6 +106,13 @@ main section#shortened a#link {
     background: rgba(253, 227, 167,0.3);
     padding: 5px 10px;
     margin-left: 5px;
-    font-size: 0.8em;
+    font-size: 1.5em;
     color: #555555;
+}
+
+main section#shortened button#copy {
+  font-size: 1.5rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  padding: 0 2rem;
 }

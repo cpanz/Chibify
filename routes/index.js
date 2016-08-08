@@ -14,7 +14,6 @@ function addHttp(url) {
 }
 
 router.get('/', (req, res) => {
-  console.log(req.get('host'));
   res.render('index');
 });
 

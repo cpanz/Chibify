@@ -3,6 +3,8 @@ var urlBox = form.elements[0];
 var link = document.getElementById('link');
 var shrBox = document.getElementById('shortened');
 
+new Clipboard('#copy');
+
 function displayShortenedUrl(response) {
   console.log(response);
   link.textContent = response.data.shortUrl;

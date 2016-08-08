@@ -1,10 +1,10 @@
 'use strict';
 
-const router = require('express')();
-
 const
-  Link = require('../models/link'),
-  generateHash = require('../hash');
+  router = require('express')(),
+  shortid = require('shortid');
+
+const Link = require('../models/link');
 
 function addHttp(url) {
     if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
@@ -33,7 +33,7 @@ router.get('/:hash', (req, res) => {
 });
 
 router.post('/new', (req, res) => {
-  let hash = generateHash();
+  let hash = shortid.generate();
   
   let link = new Link({
     shortUrl: req.protocol + '://' + req.get('host') + '/' + hash,

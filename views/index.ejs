@@ -24,7 +24,7 @@
 
       <form id="shorten-form" method="POST">
         <div class="icon-container">
-          <input type="text" placeholder="Paste your long URL here" name="url">
+          <input type="text" placeholder="Paste your long URL here" name="url" required>
           <i class="fa fa-link"></i>
         </div>
         <input type="submit" value="SHORTEN">
@@ -33,10 +33,11 @@
       <div class="row">
         <div class="column">
           <section id="shortened">
+            <p><em>Your shortened link:</em></p>
             <p>
-              <em>Your shortened link:</em>
               <a href="#" id="link" target="_blank">Loading...</a>
             </p>
+            <button id="copy" data-clipboard-target="#link">Copy</button>
           </section>
         </div>
       </div>
@@ -44,6 +45,7 @@
     </div>
 
   </main>
+<script src="./clipboard/dist/clipboard.min.js"></script>
 <script src="./axios/dist/axios.min.js"></script>
 <script src="./js/script.js"></script>
 </body>

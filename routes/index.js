@@ -6,6 +6,13 @@ const
   Link = require('../models/link'),
   generateHash = require('../hash');
 
+function addHttp(url) {
+    if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+        url = "http://" + url;
+    }
+    return url;
+}
+
 router.get('/', (req, res) => {
   console.log(req.get('host'));
   res.render('index');
@@ -27,10 +34,10 @@ router.get('/:hash', (req, res) => {
 
 router.post('/new', (req, res) => {
   let hash = generateHash();
-
+  
   let link = new Link({
     shortUrl: req.protocol + '://' + req.get('host') + '/' + hash,
-    url: req.body.url,
+    url: addHttp(req.body.url),
     createdAt: new Date()
   });
 

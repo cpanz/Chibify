@@ -4,6 +4,7 @@ const
   express = require('express'),
   mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
+  path = require('path'),
   app = express();
 
 // ROUTES
@@ -11,9 +12,10 @@ const routes = require('./routes/index');
 
 // MODELS
 const Link = require('./models/link');
-
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/node_modules'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', routes);
@@ -46,7 +48,7 @@ catch (e) {
 const mongoUri = process.env.MONGODB_URI || config.MONGODB_URI;
 mongoose.connect(mongoUri, options);
 
-const port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('Listening on port ' + port);
 });
